@@ -4,9 +4,21 @@ Out<!DOCTYPE html>
   <meta charset="UTF-8" />
   <title>Out Of Page Ad</title>
 <style>
+  body {
+		  width: -moz-available !important;
+		  max-width: -moz-available !important;
+		  height: -moz-available !important;
+		  max-height: -moz-available !important;
+		  display: block;
+		  margin: 0;
+		  padding: 0;
+		  background: black;
+  }
   #div-gpt-ad-1763151050915-0 {
-    width: 100vw;
-    height: 100vh;
+    width: -moz-available !important;
+    max-width: -moz-available !important;
+    height: -moz-available !important;
+    max-height: -moz-available !important;
     background: rgba(0,0,0,0.8);
     position: fixed;
     top: 0;
@@ -51,15 +63,6 @@ Out<!DOCTYPE html>
 
   startBtn.addEventListener("click", function () {
     console.log("Click → googletag.display");
-const adDiv = document.getElementById("div-gpt-ad-1763151050915-0");
-adDiv.style.setProperty('display', 'block', 'important');
-adDiv.style.setProperty('position', 'fixed', 'important');
-adDiv.style.setProperty('top', '0', 'important');
-adDiv.style.setProperty('left', '0', 'important');
-adDiv.style.setProperty('width', '100vw', 'important');
-adDiv.style.setProperty('height', '100vh', 'important');
-adDiv.style.setProperty('z-index', '2147483647', 'important'); // máximo z-index
-adDiv.style.setProperty('background', 'rgba(0,0,0,0.8)', 'important');
   // Muestra el contenedor siempre
   //adDiv.style.display = "block";
     googletag.cmd.push(() => {
