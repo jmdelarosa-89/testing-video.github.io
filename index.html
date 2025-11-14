@@ -6,7 +6,24 @@
 
   <!-- GPT / Google Publisher Tag -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+    window.googletag = window.googletag || { cmd: [] };
+    let slot;
 
+    googletag.cmd.push(function () {
+      // Crear slot OOP
+      slot = googletag.defineOutOfPageSlot(
+        "/21628222637/Banner_OpenWeb",
+        "div-gpt-ad-1763151050915-0"
+      );
+
+      if (slot) {
+        slot.addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      }
+    });
+  </script>
  
 
 </head>
@@ -15,26 +32,18 @@
 <button id="startAd">Ver anuncio</button>
 <div id="div-gpt-ad-1763151050915-0"></div>
 
+<!-- ESTE SCRIPT SIEMPRE VE EL BOTÓN PORQUE ESTÁ DESPUÉS -->
 <script>
-  // ahora sí existe startAd cuando se ejecuta este script
-  const startBtn = document.getElementById('startAd');
-  startBtn.addEventListener('click', () => googletag.display(slot), false);
+  const startBtn = document.getElementById("startAd");
 
-  window.googletag = window.googletag || { cmd: [] };
+  console.log("startBtn encontrado:", startBtn); // debe mostrar el botón
 
-  let slot;
+  startBtn.addEventListener("click", function () {
+    console.log("Click → googletag.display");
 
-  googletag.cmd.push(function () {
-    slot = googletag.defineOutOfPageSlot(
-      "/21628222637/Banner_OpenWeb",
-      "div-gpt-ad-1763151050915-0"
-    );
-
-    if (slot) {
-      slot.addService(googletag.pubads());
-      googletag.pubads().enableSingleRequest();
-      googletag.enableServices();
-    }
+    googletag.cmd.push(() => {
+      googletag.display("div-gpt-ad-1763151050915-0");
+    });
   });
 </script>
 
