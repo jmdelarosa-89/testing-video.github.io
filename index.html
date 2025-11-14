@@ -11,27 +11,25 @@
     // Generar ID aleatorio equivalente al de React
     const id = Math.random().toString(36).substring(2, 8) + "-" + Date.now().toString(36);
     const startBtn = document.getElementById('startAd');
-    startBtn.addEventListener('click', initVastPlayer, false);
+    startBtn.addEventListener('click', () => {googletag.display(slot);}, false);
 
-    function initVastPlayer(){
     window.googletag = window.googletag || { cmd: [] };
 
-    googletag.cmd.push(function () {
-
-      // Definir un Out-of-Page como Interstitial
-      var slot = googletag.defineOutOfPageSlot(
-        "/21628222637/Banner_OpenWeb",      // Ad unit ID
-        "div-gpt-ad-1763151050915-0",
-      );
-
-      if (slot) {
-        slot.addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-        googletag.display(slot);
-      }
-    });
-    }
+        googletag.cmd.push(function () {
+    
+          // Definir un Out-of-Page como Interstitial
+          var slot = googletag.defineOutOfPageSlot(
+            "/21628222637/Banner_OpenWeb",      // Ad unit ID
+            "div-gpt-ad-1763151050915-0",
+          );
+    
+          if (slot) {
+            slot.addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+            
+          }
+        });
   </script>
 
 </head>
