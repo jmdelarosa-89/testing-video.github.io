@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Out Of Page Ad</title>
+
+  <!-- GPT / Google Publisher Tag -->
+  <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+  <script>
+    // Generar ID aleatorio equivalente al de React
+    const id = Math.random().toString(36).substring(2, 8) + "-" + Date.now().toString(36);
+
+    window.googletag = window.googletag || { cmd: [] };
+
+    googletag.cmd.push(function () {
+
+      // Definir un Out-of-Page como Interstitial
+      var slot = googletag.defineOutOfPageSlot(
+        "/21628222637/Banner_OpenWeb",      // Ad unit ID
+        googletag.enums.OutOfPageFormat.INTERSTITIAL
+      );
+
+      if (slot) {
+        slot.addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        googletag.display(slot);
+      }
+
+      // Ejemplo de cómo sería el native banner (comentado igual que en tu React)
+      /*
+      googletag.defineSlot(
+        "6355419/Travel/Europe/France/Paris",
+        ["fluid"],
+        "div-gpt-ad-native-" + id
+      ).addService(googletag.pubads());
+
+      googletag.enableServices();
+      googletag.display("div-gpt-ad-native-" + id);
+      */
+    });
+  </script>
+
+</head>
+<body>
+
+  <!-- Contenedor que usabas en React -->
+  <div id="div-gpt-ad-1763069419134-0"></div>
+
+  <!-- Contenedor para native (comentado como en tu código original) -->
+  <!-- <div id="div-gpt-ad-native-" + id style="width:100%;min-height:250px;"></div> -->
+
+</body>
+</html>
