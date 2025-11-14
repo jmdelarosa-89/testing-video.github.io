@@ -1,40 +1,50 @@
-Out<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <title>Out Of Page Ad</title>
-<style>
-  body {
-		  width: -moz-available !important;
-		  max-width: -moz-available !important;
-		  height: -moz-available !important;
-		  max-height: -moz-available !important;
-		  display: block;
-		  margin: 0;
-		  padding: 0;
-  }
-  #div-gpt-ad-1763151050915-0 {
-    width: -moz-available !important;
-    max-width: -moz-available !important;
-    height: -moz-available !important;
-    max-height: -moz-available !important;
-    background: rgba(0,0,0,0.8);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99999;
-    display:none;
-  }
-#google_ads_iframe_/21628222637/Banner_OpenWeb_0__container__{
-	width: -moz-available !important;
-    max-width: -moz-available !important;
-    height: -moz-available !important;
-    max-height: -moz-available !important;
-}
-</style>
+  <style>
+    body {
+      width: -moz-available !important;
+      max-width: -moz-available !important;
+      height: -moz-available !important;
+      max-height: -moz-available !important;
+      display: block;
+      position: relative;
+    }
+
+    #div-gpt-ad-1763151050915-0 {
+      width: -moz-available !important;
+      max-width: -moz-available !important;
+      height: -moz-available !important;
+      max-height: -moz-available !important;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      display: block;
+      border: red 1px;
+      padding: 5px;
+    }
+
+    #div-gpt-ad-1763151050915-0>div {
+      width: -moz-available !important;
+      max-width: -moz-available !important;
+      height: -moz-available !important;
+      max-height: -moz-available !important;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      display: none;
+    }
+  </style>
   <!-- GPT / Google Publisher Tag -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-<script>
+  <script>
     window.googletag = window.googletag || { cmd: [] };
     let slot;
 
@@ -49,34 +59,68 @@ Out<!DOCTYPE html>
         slot.addService(googletag.pubads());
         googletag.pubads().enableSingleRequest();
         googletag.enableServices();
+        googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+          console.log("slotRenderEnded:", event);
+
+          if (event.slot === slot) {
+            console.log("El anuncio del slot OOP se ha renderizado.");
+            const c = document.getElementById("div-gpt-ad-1763151050915-0");
+
+            // Tamaño que tú quieras para el anuncio:
+            c.style.width = "100vw";
+            c.style.height = "100vh";
+            c.style.position = "fixed";
+            c.style.top = "0";
+            c.style.left = "0";
+            c.style.zIndex = "999999";
+            c.style.background = "black"; // opcional
+
+            const iframe = document
+              .getElementById("div-gpt-ad-1763151050915-0")
+              .querySelector("iframe");
+
+            if (iframe) {
+              iframe.style.width = "100%";
+              iframe.style.height = "100%";
+            }
+
+            console.log("Anuncio ajustado a pantalla completa");
+            console.log("slotRenderEnded:", slot);
+          }
+        });
       }
     });
   </script>
- 
 
-</head> 
+
+</head>
+
 <body>
 
-<button id="startAd">Ver anuncio</button>
-<div id="div-gpt-ad-1763151050915-0"></div>
 
-<!-- ESTE SCRIPT SIEMPRE VE EL BOTÓN PORQUE ESTÁ DESPUÉS -->
-<script>
-  const startBtn = document.getElementById("startAd");
+  <div id="div-gpt-ad-1763151050915-0">
+    <button id="startAdOutside">Ver anuncio</button>
+  </div>
 
-  console.log("startBtn encontrado:", startBtn); // debe mostrar el botón
+  <!-- ESTE SCRIPT SIEMPRE VE EL BOTÓN PORQUE ESTÁ DESPUÉS -->
+  <script>
+    const startBtn = document.getElementById("startAdOutside");
 
-  startBtn.addEventListener("click", function () {
-    console.log("Click → googletag.display");
-	  const adDiv = document.getElementById('div-gpt-ad-1763151050915-0');
-	  adDiv.style.setProperty('display','block','important');
-  // Muestra el contenedor siempre
-  //adDiv.style.display = "block";
-    googletag.cmd.push(() => {
-      googletag.display("div-gpt-ad-1763151050915-0");
+    console.log("startBtn encontrado:", startBtn); // debe mostrar el botón
+
+    startBtn.addEventListener("click", function () {
+      console.log("Click → googletag.display");
+      const adDiv = document.getElementById('div-gpt-ad-1763151050915-0');
+
+      adDiv.style.setProperty('display', 'block', 'important');
+      // Muestra el contenedor siempre
+      //adDiv.style.display = "block";
+      googletag.cmd.push(() => {
+        googletag.display("div-gpt-ad-1763151050915-0");
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
