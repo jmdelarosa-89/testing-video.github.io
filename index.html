@@ -63,6 +63,8 @@ Out<!DOCTYPE html>
 
   startBtn.addEventListener("click", function () {
     console.log("Click → googletag.display");
+	  const adDiv = document.getElementById('div-gpt-ad-1763151050915-0');
+	  adDiv.style.setProperty('display','block','important');
   // Muestra el contenedor siempre
   //adDiv.style.display = "block";
     googletag.cmd.push(() => {
