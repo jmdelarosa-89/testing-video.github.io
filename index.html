@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <title>Out Of Page Ad</title>
-
+<style>
+  #div-gpt-ad-1763151050915-0 {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+  }
+</style>
   <!-- GPT / Google Publisher Tag -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
 <script>
@@ -40,7 +50,10 @@
 
   startBtn.addEventListener("click", function () {
     console.log("Click → googletag.display");
+const adDiv = document.getElementById("div-gpt-ad-1763151050915-0");
 
+  // Muestra el contenedor siempre
+  adDiv.style.display = "block";
     googletag.cmd.push(() => {
       googletag.display("div-gpt-ad-1763151050915-0");
     });
