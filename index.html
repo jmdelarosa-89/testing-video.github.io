@@ -51,6 +51,9 @@ Out<!DOCTYPE html>
 
   startBtn.addEventListener("click", function () {
     console.log("Click → googletag.display");
+    var backdrop = document.getElementById('oop-backdrop');
+    backdrop.style.display = 'flex';
+                backdrop.setAttribute('aria-hidden', 'false');
 const adDiv = document.getElementById("div-gpt-ad-1763151050915-0");
 adDiv.style.setProperty('display', 'block', 'important');
 adDiv.style.setProperty('position', 'fixed', 'important');
