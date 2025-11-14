@@ -10,7 +10,10 @@
   <script>
     // Generar ID aleatorio equivalente al de React
     const id = Math.random().toString(36).substring(2, 8) + "-" + Date.now().toString(36);
+    const startBtn = document.getElementById('startAd');
+    startBtn.addEventListener('click', initVastPlayer, false);
 
+    function initVastPlayer(){
     window.googletag = window.googletag || { cmd: [] };
 
     googletag.cmd.push(function () {
@@ -28,11 +31,12 @@
         googletag.display(slot);
       }
     });
+    }
   </script>
 
 </head>
 <body>
-
+<button id="startAd">Ver anuncio</button>
   <!-- Contenedor que usabas en React -->
   <div id="div-gpt-ad-1763151050915-0"></div>
 
