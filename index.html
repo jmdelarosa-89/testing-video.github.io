@@ -73,6 +73,8 @@
         slot.addService(googletag.pubads());
         googletag.pubads().enableSingleRequest();
         googletag.enableServices();
+        googletag.display("div-gpt-ad-1763151050915-0");
+        
         googletag.pubads().addEventListener('slotRenderEnded', function (event) {
           console.log("slotRenderEnded:", event);
 
@@ -122,11 +124,7 @@
       const adDiv = document.getElementById('div-gpt-ad-1763151050915-0');
 
       adDiv.style.setProperty('display', 'block', 'important');
-      // Muestra el contenedor siempre
-      //adDiv.style.display = "block";
-      googletag.cmd.push(() => {
-        googletag.display("div-gpt-ad-1763151050915-0");
-      });
+      initVast();
     });
   </script>
 
