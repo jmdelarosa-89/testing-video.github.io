@@ -59,51 +59,74 @@
   <!-- GPT / Google Publisher Tag -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
-    window.googletag = window.googletag || { cmd: [] };
-    let slot;
+    initVast();
+    function initVast() {
+      window.googletag = window.googletag || { cmd: [] };
+      let slot;
 
-    googletag.cmd.push(function () {
-      // Crear slot OOP
-      slot = googletag.defineOutOfPageSlot(
-        "/21628222637/Banner_OpenWeb",
-        "div-gpt-ad-1763151050915-0"
-      );
+      googletag.cmd.push(function () {
+        // Crear slot OOP
+        slot = googletag.defineOutOfPageSlot(
+          "/21628222637/Banner_OpenWeb",
+          "div-gpt-ad-1763151050915-0"
+        );
 
-      if (slot) {
-        slot.addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-        googletag.display("div-gpt-ad-1763151050915-0");
-        
-        googletag.pubads().addEventListener('slotRenderEnded', function (event) {
-          console.log("slotRenderEnded:", event);
+        if (slot) {
+          slot.setTargeting("muted", "true");
+          slot.addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+          googletag.display("div-gpt-ad-1763151050915-0");
 
-          if (event.slot === slot) {
-            console.log("El anuncio del slot OOP se ha renderizado.");
-            const c = document.getElementById("div-gpt-ad-1763151050915-0");
+          googletag.pubads().addEventListener('slotOnload', function (event) {
+            console.log("slotOnload");
+            console.log(event);
+          });
 
-            // Tamaño que tú quieras para el anuncio:
-            c.style.width = "100vw";
-            c.style.height = "100vh";
-            c.style.position = "fixed";
-            c.style.top = "0";
-            c.style.left = "0";
-            c.style.zIndex = "999999";
-            c.style.background = "black"; // opcional
+          googletag.pubads().addEventListener('impressionViewable', function (event) {
+            console.log("impressionViewable");
+            console.log(event);
+          });
 
-            const iframe = document
-              .getElementById("div-gpt-ad-1763151050915-0")
-              .querySelector("iframe");
+          googletag.pubads().addEventListener('slotVisibilityChanged', function (event) {
+            console.log("slotVisibilityChanged");
+            console.log(event);
+          });
 
-            if (iframe) {
-              iframe.style.width = "100vw";
-              iframe.style.height = "100vh";
+          googletag.pubads().addEventListener('slotResponseReceived', function (event) {
+            console.log("slotResponseReceived");
+            console.log(event);
+          });
 
+          googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+            console.log("slotRenderEnded:", event);
+
+            if (event.slot === slot) {
+              console.log("El anuncio del slot OOP se ha renderizado.");
+              const c = document.getElementById("div-gpt-ad-1763151050915-0");
+  
+              // Tamaño que tú quieras para el anuncio:
+              c.style.width = "90vw";
+              c.style.height = "90vh";
+              c.style.position = "fixed";
+              c.style.top = "0";
+              c.style.left = "0";
+              c.style.zIndex = "999999";
+              c.style.background = "black"; // opcional
+  
+              const iframe = document
+                .getElementById("div-gpt-ad-1763151050915-0")
+                .querySelector("iframe");
+  
+              if (iframe) {
+                iframe.style.width = "80vw";
+                iframe.style.height = "80vh";
+              }
             }
-          }
-        });
-      }
-    });
+          });
+        }
+      });
+    }
   </script>
 </head>
 
@@ -115,7 +138,7 @@
 
   <!-- ESTE SCRIPT SIEMPRE VE EL BOTÓN PORQUE ESTÁ DESPUÉS -->
   <script>
-    const startBtn = document.getElementById("startAdOutside");
+   const startBtn = document.getElementById("startAdOutside");
 
     console.log("startBtn encontrado:", startBtn); // debe mostrar el botón
 
