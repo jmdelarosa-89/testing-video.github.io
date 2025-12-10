@@ -82,9 +82,6 @@
             if (event.data?.source != "gam" || event.data?.type !== "gam_event") return;
 
             switch (event.data.event) {
-                case "click":
-                    console.log("Recibido click: " + event.data.extra);
-                    break;
                 case "completed":
                     console.log("Recibido completed");
                     cerrarCreatividad();
@@ -125,26 +122,21 @@
 
                     googletag.pubads().addEventListener('slotOnload', function (event) {
                         console.log("slotOnload");
-                        console.log(event);
                     });
 
                     googletag.pubads().addEventListener('impressionViewable', function (event) {
                         console.log("impressionViewable");
-                        console.log(event);
                     });
 
                     googletag.pubads().addEventListener('slotVisibilityChanged', function (event) {
                         console.log("slotVisibilityChanged");
-                        console.log(event);
                     });
 
                     googletag.pubads().addEventListener('slotResponseReceived', function (event) {
                         console.log("slotResponseReceived");
-                        console.log(event);
                     });
 
                     googletag.pubads().addEventListener('slotRenderEnded', function (event) {
-                        console.log("slotRenderEnded:", event);
 
                         if (event.slot === slot) {
                             console.log("El anuncio del slot OOP se ha renderizado.");
@@ -185,7 +177,6 @@
         const startBtn = document.getElementById("startAdOutside");
 
         startBtn.addEventListener("click", function () {
-            console.log("Click → googletag.display");
             const adDiv = document.getElementById('div-gpt-ad-1763151050915-0');
 
             adDiv.style.setProperty('display', 'block', 'important');
